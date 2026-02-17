@@ -42,3 +42,13 @@ Thumbs.db
 *.tga
 *.wav
 *.mp4
+
+# Android build outputs
+*.apk
+*.aab
+*.obb
+
+# Unity temporary build files
+.utmp/
+
+
