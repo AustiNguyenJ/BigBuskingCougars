@@ -1,61 +1,48 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject optionsMenu;
-    [SerializeField] private GameObject settingsPanel;
-    [SerializeField] private GameObject resumeButton;
-    [SerializeField] private GameObject settingsButton;
-    [SerializeField] private GameObject quitButton;
-    [SerializeField] private GameObject backButton;
-    [SerializeField] private GameObject recenterButton;
-    [SerializeField] private Slider volumeSlider;
-    [SerializeField] private Slider vfxSlider;
+    [Header("Menus")]
+    public GameObject OptionsMenu;
+    public GameObject SettingsPanel;
+
+    [Header("Buttons")]
+    public Button ResumeButton;
+    public Button SettingsButton;
+    public Button QuitButton;
+    public Button BackButton;
+    public Button RecenterButton;
+
+    [Header("Sliders")]
+    public Slider VolumeSlider;
+    public Slider VFXSlider;
+
+    [Header("Player Control Scripts")]
+    public MonoBehaviour[] scriptsToDisableWhilePaused;
 
     private bool isPaused = false;
 
     void Start()
     {
-        if (optionsMenu != null)
-            optionsMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
+        SettingsPanel.SetActive(false);
 
-        if (settingsPanel != null)
-            settingsPanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-        Time.timeScale = 1f;
-        isPaused = false;
+        LoadSettings();
 
-        if (volumeSlider != null)
-        {
-            volumeSlider.minValue = 0f;
-            volumeSlider.maxValue = 1f;
-
-            float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
-            volumeSlider.value = savedVolume;
-            AudioListener.volume = savedVolume;
-
-            volumeSlider.onValueChanged.AddListener(SetVolume);
-        }
-
-        if (vfxSlider != null)
-        {
-            vfxSlider.minValue = 0f;
-            vfxSlider.maxValue = 1f;
-
-            float savedVFX = PlayerPrefs.GetFloat("VFX", 1f);
-            vfxSlider.value = savedVFX;
-
-            vfxSlider.onValueChanged.AddListener(SetVFXIntensity);
-        }
+        VolumeSlider.onValueChanged.AddListener(SetVolume);
+        VFXSlider.onValueChanged.AddListener(SetVFX);
     }
 
     void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (isPaused)
                 ResumeGame();
@@ -64,78 +51,102 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    private void PauseGame()
+    // ==============================
+    // Pause / Resume
+    // ==============================
+
+    public void PauseGame()
     {
         isPaused = true;
 
-        optionsMenu.SetActive(true);
-        settingsPanel.SetActive(false);
+        Time.timeScale = 0f;
 
-        resumeButton.SetActive(true);
-        settingsButton.SetActive(true);
-        quitButton.SetActive(true);
-
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(resumeButton);
+        OptionsMenu.SetActive(true);
+        SettingsPanel.SetActive(false);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        Time.timeScale = 0f;
+        ResumeButton.Select();
+
+        DisablePlayerControls();
     }
 
     public void ResumeGame()
     {
         isPaused = false;
 
-        optionsMenu.SetActive(false);
-        settingsPanel.SetActive(false);
+        Time.timeScale = 1f;
 
-        resumeButton.SetActive(true);
-        settingsButton.SetActive(true);
-        quitButton.SetActive(true);
+        OptionsMenu.SetActive(false);
+        SettingsPanel.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        Time.timeScale = 1f;
+        EnablePlayerControls();
     }
+
+    // ==============================
+    // Navigation
+    // ==============================
 
     public void OpenSettings()
     {
-        resumeButton.SetActive(false);
-        settingsButton.SetActive(false);
-        quitButton.SetActive(false);
+        OptionsMenu.SetActive(false);
+        SettingsPanel.SetActive(true);
 
-        settingsPanel.SetActive(true);
-
-        StartCoroutine(SelectVolumeSlider());
+        VolumeSlider.Select();
     }
 
-    private IEnumerator SelectVolumeSlider()
+    public void BackToPauseMenu()
     {
-        yield return null;
+        SettingsPanel.SetActive(false);
+        OptionsMenu.SetActive(true);
 
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(volumeSlider.gameObject);
+        ResumeButton.Select();
     }
 
-    public void BackToMenu()
+    // ==============================
+    // Sliders
+    // ==============================
+
+    public void SetVolume(float value)
     {
-        settingsPanel.SetActive(false);
-
-        resumeButton.SetActive(true);
-        settingsButton.SetActive(true);
-        quitButton.SetActive(true);
-
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(resumeButton);
+        PlayerPrefs.SetFloat("volume", value);
+        PlayerPrefs.Save();
     }
+
+    public void SetVFX(float value)
+    {
+        PlayerPrefs.SetFloat("vfx", value);
+        PlayerPrefs.Save();
+    }
+
+    void LoadSettings()
+    {
+        float volume = PlayerPrefs.GetFloat("volume", 1f);
+        float vfx = PlayerPrefs.GetFloat("vfx", 1f);
+
+        VolumeSlider.value = volume;
+        VFXSlider.value = vfx;
+    }
+
+    // ==============================
+    // Recenter
+    // ==============================
+
+    public void RecenterVR()
+    {
+        InputTracking.Recenter();
+    }
+
+    // ==============================
+    // Quit Game
+    // ==============================
 
     public void QuitGame()
     {
-        Time.timeScale = 1f;
-
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -143,22 +154,25 @@ public class PauseMenu : MonoBehaviour
 #endif
     }
 
-    public void SetVolume(float volume)
+    // ==============================
+    // Disable / Enable Player Movement
+    // ==============================
+
+    void DisablePlayerControls()
     {
-        AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("Volume", volume);
-        Debug.Log("Volume: " + volume);
+        foreach (MonoBehaviour script in scriptsToDisableWhilePaused)
+        {
+            if (script != null)
+                script.enabled = false;
+        }
     }
 
-    public void SetVFXIntensity(float intensity)
+    void EnablePlayerControls()
     {
-        PlayerPrefs.SetFloat("VFX", intensity);
-        Debug.Log("VFX Intensity: " + intensity);
-    }
-
-    public void RecenterView()
-    {
-        Debug.Log("Recenter View pressed");
-        UnityEngine.XR.InputTracking.Recenter();
+        foreach (MonoBehaviour script in scriptsToDisableWhilePaused)
+        {
+            if (script != null)
+                script.enabled = true;
+        }
     }
 }
