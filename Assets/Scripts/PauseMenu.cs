@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject resumeButton;
     [SerializeField] private GameObject settingsButton;
     [SerializeField] private GameObject quitButton;
+    [SerializeField] private GameObject backButton;
+    [SerializeField] private GameObject recenterButton;
     [SerializeField] private Slider volumeSlider;
     [SerializeField] private Slider vfxSlider;
 
@@ -42,7 +45,9 @@ public class PauseMenu : MonoBehaviour
         {
             vfxSlider.minValue = 0f;
             vfxSlider.maxValue = 1f;
-            vfxSlider.value = 1f;
+
+            float savedVFX = PlayerPrefs.GetFloat("VFX", 1f);
+            vfxSlider.value = savedVFX;
 
             vfxSlider.onValueChanged.AddListener(SetVFXIntensity);
         }
@@ -103,6 +108,16 @@ public class PauseMenu : MonoBehaviour
         quitButton.SetActive(false);
 
         settingsPanel.SetActive(true);
+
+        StartCoroutine(SelectVolumeSlider());
+    }
+
+    private IEnumerator SelectVolumeSlider()
+    {
+        yield return null;
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(volumeSlider.gameObject);
     }
 
     public void BackToMenu()
@@ -120,7 +135,12 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Time.timeScale = 1f;
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
     }
 
     public void SetVolume(float volume)
@@ -132,6 +152,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SetVFXIntensity(float intensity)
     {
+        PlayerPrefs.SetFloat("VFX", intensity);
         Debug.Log("VFX Intensity: " + intensity);
     }
 
