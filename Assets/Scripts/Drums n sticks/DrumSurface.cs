@@ -10,6 +10,13 @@ public class DrumSurface : MonoBehaviour
 
     float lastHitTime;
 
+    DrumFeedback feedback;
+
+    void Awake()
+    {
+        feedback = GetComponent<DrumFeedback>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         DrumStickXR stick = other.GetComponent<DrumStickXR>();
@@ -28,6 +35,10 @@ public class DrumSurface : MonoBehaviour
 
     void RegisterHit(DrumStickXR stick, Vector3 hitPosition)
     {
+
+        if (feedback != null)
+            feedback.Hit();
+
         float velocity = stick.velocity;
 
         if (velocity < 0.4f)

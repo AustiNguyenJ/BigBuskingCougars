@@ -1,13 +1,8 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class BaseDrumScript : MonoBehaviour
+public class DrumFeedback: MonoBehaviour
 {
-    [Header("Input (temporary)")]
-    public KeyCode hitKey = KeyCode.F;
-
     [Header("Refs")]
     public Transform visualTransform;     // assign Visual (ideally drum head mesh)
     public AudioSource audioSource;       // assign AudioSource (3D)
@@ -36,16 +31,7 @@ public class BaseDrumScript : MonoBehaviour
             audioSource = GetComponentInChildren<AudioSource>();
     }
 
-    void Update()
-    {
-        if (Keyboard.current == null) return;
-
-        // KeyCode -> InputSystem Key (by name)
-        if (!Enum.TryParse(hitKey.ToString(), true, out Key key)) return;
-
-        if (Keyboard.current[key].wasPressedThisFrame)
-            Hit();
-    }
+    
 
     public void Hit()
     {
