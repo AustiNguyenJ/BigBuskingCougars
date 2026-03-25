@@ -6,6 +6,8 @@ public class DrumHitTester : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip drumHitClip;
 
+    public DrumStickXR.StickHand testHand = DrumStickXR.StickHand.Left;
+
     private float[] testVelocity = { 0.1f, 0.3f, 0.5f, 0.7f, 0.9f };
     private int currIndex = 0;
 
@@ -19,7 +21,6 @@ public class DrumHitTester : MonoBehaviour
             PlayDrumHit();
         }
 
-        // Simulate combo updates with C key
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             SimComboUpdate();
@@ -33,9 +34,10 @@ public class DrumHitTester : MonoBehaviour
             audioSource.PlayOneShot(drumHitClip);
         }
 
-        float velocity = testVelocity[currIndex]; 
-        Debug.Log($"Velocity: {velocity}");
-        VisualResponseSystem.TriggerDrumHit(velocity, transform.position);
+        float velocity = testVelocity[currIndex];
+        Debug.Log($"Velocity: {velocity}, Hand: {testHand}");
+
+        VisualResponseSystem.TriggerDrumHit(velocity, transform.position, testHand);
 
         currIndex = (currIndex + 1) % testVelocity.Length;
     }

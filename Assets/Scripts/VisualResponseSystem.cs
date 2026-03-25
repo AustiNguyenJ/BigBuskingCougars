@@ -3,7 +3,7 @@ using System;
 
 public class VisualResponseSystem : MonoBehaviour
 {
-    public static Action<float, Vector3> OneDrumHit;
+    public static event Action<float, Vector3, DrumStickXR.StickHand> OneDrumHit;
     public static event Action<int> OnComboUpdated;
 
     public static void TriggerComboUpdate(int combo)
@@ -11,12 +11,19 @@ public class VisualResponseSystem : MonoBehaviour
         OnComboUpdated?.Invoke(combo);
     }
 
-    public static void TriggerDrumHit(float velocity, Vector3 position)
+    public static void TriggerDrumHit(float intensity, Vector3 position, DrumStickXR.StickHand hand)
     {
-        OneDrumHit?.Invoke(velocity, position);
+        OneDrumHit?.Invoke(intensity, position, hand);
     }
+    [Header("Left stick effect")]
+    public ParticleSystem hitEffect_L;
 
-    public ParticleSystem hitEffect;
+    [Header("Right stick effect")]
+    public ParticleSystem hitEffect_R;
+
+    [Header("Colors Gradient")]
+    public Gradient colorGradient;
+
 
     private void OnEnable()
     {
@@ -28,20 +35,27 @@ public class VisualResponseSystem : MonoBehaviour
         OneDrumHit -= HandleDrumHit;
     }
 
-    private void HandleDrumHit(float velocity, Vector3 position)
+    private void HandleDrumHit(float velocity, Vector3 position, DrumStickXR.StickHand hand)
     {
-        Debug.Log($"Drum hit detected with velocity {velocity} at position {position}");
+        Debug.Log($"{hand} drum hit detected with velocity {velocity} at position {position}");
 
-        if (hitEffect != null)
+        ParticleSystem chosenEffect = null;
+
+        if (hand == DrumStickXR.StickHand.Left)
+            chosenEffect = hitEffect_L;
+        else if (hand == DrumStickXR.StickHand.Right)
+            chosenEffect = hitEffect_R;
+
+        if (chosenEffect != null)
         {
-            var main = hitEffect.main;
+            var main = chosenEffect.main;
 
-            main.startSize = Mathf.Lerp(0.5f, 3.0f, velocity);
-            main.startColor = Color.Lerp(Color.cyan, Color.red, velocity);
+            main.startSize = Mathf.Lerp(0.05f, 1.5f, velocity);
+            main.startColor = colorGradient.Evaluate(velocity);
 
-            hitEffect.transform.position = position;
-            hitEffect.Stop();
-            hitEffect.Play();
+            chosenEffect.transform.position = position;
+            chosenEffect.Stop();
+            chosenEffect.Play();
         }
     }
 }

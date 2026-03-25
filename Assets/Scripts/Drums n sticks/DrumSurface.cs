@@ -35,32 +35,34 @@ public class DrumSurface : MonoBehaviour
 
     void RegisterHit(DrumStickXR stick, Vector3 hitPosition)
     {
-
-        if (feedback != null)
-            feedback.Hit();
-
         float velocity = stick.velocity;
 
         if (velocity < 0.4f)
             return;
 
-        float power = Mathf.Clamp01(velocity / 4f);
+        if (feedback != null)
+            feedback.Hit();
 
+        float power = Mathf.Clamp01(velocity / 4f);
         float accuracy = CalculateAccuracy(hitPosition);
 
         // HIT FEEDBACK
+        var hand = stick.hand;
+
         if (accuracy >= 2f)
-            Debug.Log("PERFECT HIT!");
+            Debug.Log($"{hand} PERFECT HIT!");
 
         else if (accuracy >= 1.2f)
-            Debug.Log("GOOD HIT");
+            Debug.Log($"{hand} GOOD HIT");
 
         else
-            Debug.Log("EDGE HIT");
+            Debug.Log($"{hand} EDGE HIT");
 
         int score = Mathf.RoundToInt(basePoints * power * accuracy);
 
-        ScoreManager.Instance.AddScore(score);
+        //ScoreManager.Instance.AddScore(score);
+
+        VisualResponseSystem.TriggerDrumHit(power, hitPosition, hand);
     }
 
     float CalculateAccuracy(Vector3 hitPosition)

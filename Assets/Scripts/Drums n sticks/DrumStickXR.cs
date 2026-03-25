@@ -1,7 +1,16 @@
 using UnityEngine;
+
 //Attach this to the drumstick objects
 public class DrumStickXR : MonoBehaviour
 {
+    public enum StickHand
+    {
+        Left,
+        Right
+    }
+
+    public StickHand hand;
+
     public float velocity;
     public float acceleration;
 
@@ -16,7 +25,6 @@ public class DrumStickXR : MonoBehaviour
     void Update()
     {
         velocity = (transform.position - lastPosition).magnitude / Time.deltaTime;
-
         acceleration = (velocity - lastVelocity) / Time.deltaTime;
 
         lastVelocity = velocity;
