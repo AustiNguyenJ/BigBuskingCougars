@@ -35,13 +35,6 @@ Thumbs.db
 # =============== #
 # Unity VR assets (optional LFS)
 # =============== #
-*.fbx
-*.obj
-*.png
-*.jpg
-*.tga
-*.wav
-*.mp4
 
 # Android build outputs
 *.apk
