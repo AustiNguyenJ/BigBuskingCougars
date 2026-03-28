@@ -3,7 +3,7 @@ using System;
 
 public class VisualResponseSystem : MonoBehaviour
 {
-    public static event Action<float, Vector3, DrumStickXR.StickHand> OneDrumHit;
+    public static event Action<float, Vector3, DrumStickXR.StickHand, Color> OneDrumHit;
     public static event Action<int> OnComboUpdated;
 
     public static void TriggerComboUpdate(int combo)
@@ -11,18 +11,16 @@ public class VisualResponseSystem : MonoBehaviour
         OnComboUpdated?.Invoke(combo);
     }
 
-    public static void TriggerDrumHit(float intensity, Vector3 position, DrumStickXR.StickHand hand)
+    public static void TriggerDrumHit(float intensity, Vector3 position, DrumStickXR.StickHand hand, Color color)
     {
-        OneDrumHit?.Invoke(intensity, position, hand);
+        OneDrumHit?.Invoke(intensity, position, hand, color);
     }
+
     [Header("Left stick effect")]
     public ParticleSystem hitEffect_L;
 
     [Header("Right stick effect")]
     public ParticleSystem hitEffect_R;
-
-    [Header("Colors Gradient")]
-    public Gradient colorGradient;
 
 
     private void OnEnable()
@@ -35,10 +33,8 @@ public class VisualResponseSystem : MonoBehaviour
         OneDrumHit -= HandleDrumHit;
     }
 
-    private void HandleDrumHit(float velocity, Vector3 position, DrumStickXR.StickHand hand)
+    private void HandleDrumHit(float intensity, Vector3 position, DrumStickXR.StickHand hand, Color color)
     {
-        Debug.Log($"{hand} drum hit detected with velocity {velocity} at position {position}");
-
         ParticleSystem chosenEffect = null;
 
         if (hand == DrumStickXR.StickHand.Left)
@@ -50,12 +46,15 @@ public class VisualResponseSystem : MonoBehaviour
         {
             var main = chosenEffect.main;
 
-            main.startSize = Mathf.Lerp(0.05f, 1.5f, velocity);
-            main.startColor = colorGradient.Evaluate(velocity);
+            main.startSize = Mathf.Lerp(0.05f, 1.5f, intensity);
+
+            if (color != null)
+                main.startColor = color;
 
             chosenEffect.transform.position = position;
             chosenEffect.Stop();
             chosenEffect.Play();
         }
     }
+
 }

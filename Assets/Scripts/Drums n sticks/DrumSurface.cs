@@ -47,7 +47,13 @@ public class DrumSurface : MonoBehaviour
 
         Debug.Log($"Zone: {zoneResult.zone} | Dist: {zoneResult.normalizedDistance:F2}");
 
+        Color color = new Color32(0x65, 0x65, 0x65, 0xFF);
 
-        VisualResponseSystem.TriggerDrumHit(power, hitPosition, hand);
+        if (ScoringManager.Instance != null)
+        {
+            color = ScoringManager.Instance.ProcessHit(velocity);
+        }
+
+        VisualResponseSystem.TriggerDrumHit(power, hitPosition, hand, color);
     }
 }

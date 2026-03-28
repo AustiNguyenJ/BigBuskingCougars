@@ -37,7 +37,7 @@ public class DrumHitTester : MonoBehaviour
         float velocity = testVelocity[currIndex];
         Debug.Log($"Velocity: {velocity}, Hand: {testHand}");
 
-        VisualResponseSystem.TriggerDrumHit(velocity, transform.position, testHand);
+        //VisualResponseSystem.TriggerDrumHit(velocity, transform.position, testHand);
 
         currIndex = (currIndex + 1) % testVelocity.Length;
     }
