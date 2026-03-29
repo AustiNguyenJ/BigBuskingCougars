@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: baseHitClip
       value: 
       objectReference: {fileID: 8300000, guid: f012210ed0d3b5745b8ec0b1c5df9f8a, type: 3}
+    - target: {fileID: 4401038875249063455, guid: ec99e5b20c5c4b345ab50fe8a446fe4f, type: 3}
+      propertyPath: centerPitch
+      value: 0.98
+      objectReference: {fileID: 0}
     - target: {fileID: 6008014776151095714, guid: ec99e5b20c5c4b345ab50fe8a446fe4f, type: 3}
       propertyPath: midPercent
       value: 0.379
@@ -74,7 +78,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ad9725f3ce3b45248b24252f85b60759, type: 2}
     - target: {fileID: 7488589178707881883, guid: ec99e5b20c5c4b345ab50fe8a446fe4f, type: 3}
       propertyPath: m_Name
-      value: SteelPan2 Variant
+      value: SteelPan2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

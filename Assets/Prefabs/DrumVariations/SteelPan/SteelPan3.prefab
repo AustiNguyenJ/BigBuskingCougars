@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 116c5e26f09cf2d4190fd62e0de53d29, type: 2}
     - target: {fileID: 7488589178707881883, guid: ec99e5b20c5c4b345ab50fe8a446fe4f, type: 3}
       propertyPath: m_Name
-      value: SteelPan2 Variant 1
+      value: SteelPan3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

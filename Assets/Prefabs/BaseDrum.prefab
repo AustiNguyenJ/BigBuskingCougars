@@ -235,9 +235,9 @@ MonoBehaviour:
   midClip: {fileID: 0}
   edgeClip: {fileID: 0}
   baseHitClip: {fileID: 8300000, guid: c5628f1ffd4645f42a28bc71d0605074, type: 3}
-  centerPitch: 0.8
+  centerPitch: 0.98
   midPitch: 1
-  edgePitch: 1.2
+  edgePitch: 1.02
   minVolume: 0.2
   maxVolume: 1
 --- !u!114 &702100621054764534

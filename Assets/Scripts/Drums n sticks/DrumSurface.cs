@@ -37,6 +37,9 @@ public class DrumSurface : MonoBehaviour
         if (velocity < 0.4f)
             return;
 
+        float normalized = Mathf.Clamp01(stick.velocity / 4f);
+        stick.SendHaptics(normalized, 0.08f);
+
         DrumSurfaceZones.ZoneResult zoneResult = zones.EvaluateZone(hitPosition);
 
         if (feedback != null)
