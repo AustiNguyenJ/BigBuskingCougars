@@ -80,7 +80,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: db3bd81203e84ab46981cf76ff61f1be, type: 3}
+        m_Texture: {fileID: 2800000, guid: e78519f8f7bd94e419f438bd89e6c2c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -141,7 +141,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _Exponent: 1
-    - _Exposure: 2.3
+    - _Exposure: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -181,7 +181,7 @@ Material:
     - _MiddleColor: {r: 1, g: 1, b: 1, a: 1}
     - _SkyTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 0.5754717, g: 0.50644016, b: 0.42074582, a: 0.5}
+    - _Tint: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 0.5}
     - _TopColor: {r: 1, g: 0.29999998, b: 0.29999998, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
