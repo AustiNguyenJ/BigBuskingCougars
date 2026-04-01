@@ -1097,6 +1097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3024394262952609113}
   - component: {fileID: 4741420766661034620}
+  - component: {fileID: 891976296786682943}
   m_Layer: 0
   m_Name: Mii
   m_TagString: Untagged
@@ -1143,6 +1144,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &891976296786682943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6624322091367560297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c6c898f93e1499aaeb675ea2fe567b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NPCMaterialRandomizer
+  npcRenderer: {fileID: 1168878127787017578}
+  skinOptions: {fileID: 11400000, guid: cb79ea52b82a5ee4c90a309a61173404, type: 2}
+  skinMatName: mii skin
 --- !u!1 &6710690952071613570
 GameObject:
   m_ObjectHideFlags: 0
