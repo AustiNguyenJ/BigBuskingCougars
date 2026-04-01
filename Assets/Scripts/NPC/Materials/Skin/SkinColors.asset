@@ -12,3 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e21fed976748ac87c9a23e210ef9c1, type: 3}
   m_Name: SkinColors
   m_EditorClassIdentifier: Assembly-CSharp::NPC.RandomMatProvider
+  mats:
+  - {fileID: 2100000, guid: aa437b8c4b8103147a6e2ae5a57a8f48, type: 2}
+  - {fileID: 2100000, guid: 1109806540e4bcc4f87cf1926592bd64, type: 2}
+  - {fileID: 2100000, guid: 1203ef14e85e8a946b00620f6b0a567e, type: 2}
+  - {fileID: 2100000, guid: 6836bd94972c3e04cbaab9acbb55e715, type: 2}
+  - {fileID: 2100000, guid: 195e12dcaabc5d64c881c49c7c239fe6, type: 2}
+  - {fileID: 2100000, guid: c4bf5c39e197fbe4b95d0f98e07f7e4c, type: 2}
+  - {fileID: 2100000, guid: 6a82e990476fc2445af0346b19bab98b, type: 2}
