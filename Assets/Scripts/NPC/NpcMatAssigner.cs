@@ -36,7 +36,6 @@ public class NpcMatAssigner : MonoBehaviour
             if (sharedMats[i] != null && sharedMats[i].name.Contains(skinMatName))
             {
                 currentMats[i] = skinOptions.GetRandomMat();
-                Debug.Log(currentMats[i].name);
             }
         }
         npcRenderer.materials = currentMats;
