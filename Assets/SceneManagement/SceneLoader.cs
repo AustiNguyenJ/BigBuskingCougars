@@ -12,10 +12,10 @@ public struct RequestSceneLoadEvent
 
 namespace Systems.SceneManagement {
     public class SceneLoader : MonoBehaviour { 
-        [SerializeField] Image loadingBar;
+       // [SerializeField] Image loadingBar;
         [SerializeField] float fillSpeed = 0.5f;
-        [SerializeField] Canvas loadingCanvas;
-        [SerializeField] Camera loadingCamera;
+       // [SerializeField] Canvas loadingCanvas;
+       // [SerializeField] Camera loadingCamera;
 
         [Header("Developer Settings")] 
         public SceneGroupSO startingSceneAsset;
@@ -55,12 +55,12 @@ namespace Systems.SceneManagement {
         void Update() {
             if (!isLoading) return;
             
-            float currentFillAmount = loadingBar.fillAmount;
-            float progressDifference = Mathf.Abs(currentFillAmount - targetProgress);
+           // float currentFillAmount = loadingBar.fillAmount;
+           // float progressDifference = Mathf.Abs(currentFillAmount - targetProgress);
 
-            float dynamicFillSpeed = progressDifference * fillSpeed;
+          //  float dynamicFillSpeed = progressDifference * fillSpeed;
     
-            loadingBar.fillAmount = Mathf.Lerp(currentFillAmount, targetProgress, Time.deltaTime * dynamicFillSpeed);
+           // loadingBar.fillAmount = Mathf.Lerp(currentFillAmount, targetProgress, Time.deltaTime * dynamicFillSpeed);
         }
 
         // before loading new scene, if there are any active runtime entities such as Projectiles or enemies disable/destroy them
@@ -83,7 +83,7 @@ namespace Systems.SceneManagement {
 
        public async Task LoadSceneGroup(SceneGroupSO sceneGroupSO) {
            
-            loadingBar.fillAmount = 0f;
+          //  loadingBar.fillAmount = 0f;
             targetProgress = 1f;
 
             SceneGroup sceneGroupToLoad = sceneGroupSO.sceneGroup;
@@ -99,12 +99,12 @@ namespace Systems.SceneManagement {
     
         void EnableLoadingCanvas(bool enable = true) {
             isLoading = enable;
-            loadingCanvas.gameObject.SetActive(enable);
-            loadingCamera.gameObject.SetActive(enable);
+          //  loadingCanvas.gameObject.SetActive(enable);
+            //loadingCamera.gameObject.SetActive(enable);
         }
         
         public async Task LoadDependenciesAdditive(SceneGroupSO sceneGroupSO) {
-            loadingBar.fillAmount = 0f;
+           // loadingBar.fillAmount = 0f;
             targetProgress = 1f;
 
             SceneGroup sceneGroupToLoad = sceneGroupSO.sceneGroup;
