@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Drum Setup Testing.unity
     guid: aea50f4520f9a1d41aec19117c61f887
+  - enabled: 1
+    path: Assets/Scenes/SetupTesting.unity
+    guid: 2ff80acddf9c5684aabf9f55371b14fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 04b2c91cc42c635438802e71b2432e71, type: 2}
