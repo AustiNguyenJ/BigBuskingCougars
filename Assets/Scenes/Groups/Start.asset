@@ -15,7 +15,7 @@ MonoBehaviour:
   sceneGroup:
     Scenes:
     - Reference:
-        asset: {fileID: 0}
-        guid: 00000000000000000000000000000000
+        asset: {fileID: 102900000, guid: aea50f4520f9a1d41aec19117c61f887, type: 3}
+        guid: aea50f4520f9a1d41aec19117c61f887
       SceneType: 0
     IsActive: 1

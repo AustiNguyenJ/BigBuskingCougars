@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ namespace Systems.SceneManagement {
         [SerializeField] float fillSpeed = 0.5f;
        // [SerializeField] Canvas loadingCanvas;
        // [SerializeField] Camera loadingCamera;
+       [SerializeField, Required] GameObject testVariable;
 
         [Header("Developer Settings")] 
         public SceneGroupSO startingSceneAsset;
@@ -29,7 +31,7 @@ namespace Systems.SceneManagement {
 
         async void Start()
         {
-            if (Validate.AnyNull(startingSceneAsset)) return;
+            if (Validate.AnyNull(startingSceneAsset) || !LoadGroupOnStart) return;
             try
             {
                 await LoadSceneGroup(startingSceneAsset);
