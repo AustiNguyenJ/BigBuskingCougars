@@ -3,43 +3,38 @@ using Events.UI;
 using Oculus.Interaction.Input;
 using UnityEngine;
 
+public interface IMainMenuEvent { }
+
+[Serializable]
+public class InvokeMainMenuEvent<T>: ButtonAction where T : struct, IMainMenuEvent
+{
+    public T eventStructRef;
+    
+    public override void Execute()
+    {
+        GlobalEventAsset.Instance.TriggerEvent(eventStructRef);
+    }
+}
+
+[Serializable]
+public class InvokePlayButtonSelectedEvent : InvokeMainMenuEvent<OnPlayButtonSelected> {}
+[Serializable]
+public class InvokeLocationSelectedEvent : InvokeMainMenuEvent<OnLocationSelected> {}
+
+[Serializable]
 public abstract class ButtonAction
 {
     public abstract void Execute();
 }
-
-public interface IButtonEvent
-{
-    void Invoke();
-}
-
-[Serializable]
-public class SwitchSettingTabButtonEvent : IButtonEvent
-{
-    [SerializeField] SettingTabType type;
-    public void Invoke()
-    {
-        GlobalEventAsset.Instance.TriggerEvent(new SwitchSettingTabEvent { typeToSwitchTo = type });
-    }
-}
-
-[Serializable]
-public class InvokeEvent : ButtonAction
-{
-    [SerializeReference] public IButtonEvent buttonEvent;
-    
-    public override void Execute()
-    {
-        buttonEvent.Invoke();
-    }
-}
     
 public class ButtonActionExecutor : MonoBehaviour
 {
-    [SerializeReference] ButtonAction action;
+    [SerializeReference, SerializeField] ButtonAction action;
 
     public void Execute()
     {
+        Debug.Log("Attempting to exectute on " + gameObject.name);
+        if (Validate.AnyNull(action)) return;
         action.Execute();
     }
 }

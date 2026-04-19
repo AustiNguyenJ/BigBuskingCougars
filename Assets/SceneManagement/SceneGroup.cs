@@ -8,7 +8,6 @@ namespace Systems.SceneManagement {
     public class SceneGroup {
         public string GroupName => nameof(SceneGroup);
         public List<SceneData> Scenes;
-        public bool IsActive = true;
         
         public string FindSceneNameByType(SceneType sceneType) {
             return Scenes.FirstOrDefault(scene => scene.SceneType == sceneType)?.Reference.Name;

@@ -46,12 +46,12 @@ namespace Systems.SceneManagement {
 
         void OnEnable()
         {
-           // GlobalEventAsset.Instance.StartListening<RequestSceneLoadEvent>(Load);
+           GlobalEventAsset.Instance.StartListening<RequestSceneLoadEvent>(Load);
         }
 
         void OnDisable()
         {
-           // GlobalEventAsset.Instance.StopListening<RequestSceneLoadEvent>(Load);
+           GlobalEventAsset.Instance.StopListening<RequestSceneLoadEvent>(Load);
         }
 
         void Update() {
@@ -65,14 +65,8 @@ namespace Systems.SceneManagement {
            // loadingBar.fillAmount = Mathf.Lerp(currentFillAmount, targetProgress, Time.deltaTime * dynamicFillSpeed);
         }
 
-        // before loading new scene, if there are any active runtime entities such as Projectiles or enemies disable/destroy them
         async void Load(RequestSceneLoadEvent requestSceneLoadEvent)
         {
-            if (!requestSceneLoadEvent.sceneGroupToLoad.sceneGroup.IsActive)
-            {
-                Debug.LogWarning("Scene group to load not marked as Active, canceling load");
-                return;
-            }
             try
             {
                 await LoadSceneGroup(requestSceneLoadEvent.sceneGroupToLoad);

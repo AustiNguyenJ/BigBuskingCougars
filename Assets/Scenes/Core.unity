@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Systems.SceneManagement.SceneLoader
   fillSpeed: 0.5
   testVariable: {fileID: 0}
-  startingSceneAsset: {fileID: 11400000, guid: 74ca088222d3d8a46896b555550b6189, type: 2}
+  startingSceneAsset: {fileID: 11400000, guid: 1d7d77ba5ee289944867f23a6ed0ec16, type: 2}
   LoadGroupOnStart: 1
 --- !u!4 &195128530
 Transform:
