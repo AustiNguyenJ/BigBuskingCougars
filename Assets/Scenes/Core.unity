@@ -212,11 +212,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1091514305 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8817100350425082107, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-  m_PrefabInstance: {fileID: 1758329846}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1267931786
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,46 +308,6 @@ PrefabInstance:
     - target: {fileID: 1175839077382630147, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
       propertyPath: m_Name
       value: XR Origin (VR)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4463042047439146686, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 1889710f103d43544bb132c8203a7334, type: 2}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_LineWidth
-      value: 0.0063
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_LineOriginTransform
-      value: 
-      objectReference: {fileID: 1091514305}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_StopLineAtSelection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_SetLineColorGradient
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_StopLineAtFirstRaycastHit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_OverrideInteractorLineLength
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_WidthCurve.m_Curve.Array.data[1].time
-      value: 1.0083313
-      objectReference: {fileID: 0}
-    - target: {fileID: 5645875587943953942, guid: 273423d377ebb05448d18ba882f78d1c, type: 3}
-      propertyPath: m_WidthCurve.m_Curve.Array.data[1].value
-      value: 1.0104828
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
