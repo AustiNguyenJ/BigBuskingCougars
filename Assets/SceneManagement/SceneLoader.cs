@@ -10,6 +10,11 @@ public struct RequestSceneLoadEvent
     public SceneGroupSO sceneGroupToLoad;
 }
 
+public struct OnSceneGroupLoadedEvent
+{
+    public SceneGroupSO loadedGroup;
+}
+
 
 namespace Systems.SceneManagement {
     public class SceneLoader : MonoBehaviour { 
@@ -31,28 +36,22 @@ namespace Systems.SceneManagement {
 
         async void Start()
         {
-            if (Validate.AnyNull(startingSceneAsset) || !LoadGroupOnStart) return;
-            try
-            {
-                await LoadSceneGroup(startingSceneAsset);
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
-            //GlobalEventAsset.Instance.TriggerEvent(new SceneGroupLoadedEvent {  loadedSceneGroup = startingSceneAsset });    
+            if (LoadGroupOnStart)
+                Load(startingSceneAsset);
         }
 
 
         void OnEnable()
         {
-           GlobalEventAsset.Instance.StartListening<RequestSceneLoadEvent>(Load);
+           GlobalEventAsset.Instance.StartListening<RequestSceneLoadEvent>(OnLoadSceneRequested);
         }
 
         void OnDisable()
         {
-           GlobalEventAsset.Instance.StopListening<RequestSceneLoadEvent>(Load);
+           GlobalEventAsset.Instance.StopListening<RequestSceneLoadEvent>(OnLoadSceneRequested);
         }
+        
+        void OnLoadSceneRequested(RequestSceneLoadEvent data) => Load(data.sceneGroupToLoad);
 
         void Update() {
             if (!isLoading) return;
@@ -65,11 +64,12 @@ namespace Systems.SceneManagement {
            // loadingBar.fillAmount = Mathf.Lerp(currentFillAmount, targetProgress, Time.deltaTime * dynamicFillSpeed);
         }
 
-        async void Load(RequestSceneLoadEvent requestSceneLoadEvent)
+        async void Load(SceneGroupSO sceneGroupToLoad)
         {
             try
             {
-                await LoadSceneGroup(requestSceneLoadEvent.sceneGroupToLoad);
+                await LoadSceneGroup(sceneGroupToLoad);
+                GlobalEventAsset.Instance.TriggerEvent(new OnSceneGroupLoadedEvent { loadedGroup = sceneGroupToLoad });
             }
             catch (Exception e)
             {

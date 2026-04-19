@@ -2,24 +2,25 @@ using System;
 using Events.UI;
 using Oculus.Interaction.Input;
 using UnityEngine;
-
-public interface IMainMenuEvent { }
+using UnityEngine.UI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [Serializable]
-public class InvokeMainMenuEvent<T>: ButtonAction where T : struct, IMainMenuEvent
+public class ExitAppButtonAction : ButtonAction
 {
-    public T eventStructRef;
-    
     public override void Execute()
     {
-        GlobalEventAsset.Instance.TriggerEvent(eventStructRef);
+#if UNITY_EDITOR
+        // Stops playmode in the Unity Editor
+        EditorApplication.isPlaying = false;
+#else
+            // Closes the application in a standalone build
+            Application.Quit();
+#endif
     }
 }
-
-[Serializable]
-public class InvokePlayButtonSelectedEvent : InvokeMainMenuEvent<OnPlayButtonSelected> {}
-[Serializable]
-public class InvokeLocationSelectedEvent : InvokeMainMenuEvent<OnLocationSelected> {}
 
 [Serializable]
 public abstract class ButtonAction
@@ -33,7 +34,6 @@ public class ButtonActionExecutor : MonoBehaviour
 
     public void Execute()
     {
-        Debug.Log("Attempting to exectute on " + gameObject.name);
         if (Validate.AnyNull(action)) return;
         action.Execute();
     }
