@@ -8,18 +8,24 @@ public class MainMenuManager : MonoBehaviour
 {
     [Tooltip("First State is Default State which should be OnMainMenu")]
     [SerializeReference] 
-    List<MenuState> menuStates = new List<MenuState>();
+    public List<MenuState> menuStates = new List<MenuState>();
     MenuState currentMenuState;
-
+    
+    
     [ReadOnly, ShowInInspector]
     string currentStateName => currentMenuState != null ? currentMenuState.GetType().ToString() : "Null";
 
     void Start()
     {
+        foreach (var state in menuStates)
+        {
+            state.SetManager(this);
+        }
+        
         ChangeState(menuStates[0]);
     }
     
-    void ChangeState(MenuState newState)
+    public void ChangeState(MenuState newState)
     {
         if (Validate.AnyNull(newState)) return;
         

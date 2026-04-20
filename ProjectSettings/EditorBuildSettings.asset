@@ -23,7 +23,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing menu.unity
     guid: 1123879df0ad19043aa3588bdbedbc19
+  - enabled: 1
+    path: Assets/Scenes/StreetScene.unity
+    guid: 94abb898913bdff4196a58e1bc250a9b
+  - enabled: 1
+    path: Assets/Scenes/StageScene.unity
+    guid: b623af03a5c88d84a806b4f9289ad177
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 6b49b7a8187665f4aa61d00f7a66c9ed, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 04b2c91cc42c635438802e71b2432e71, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 6eb30c578f9309e4ea3192a748eb4b73, type: 2}

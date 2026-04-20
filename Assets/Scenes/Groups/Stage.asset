@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92db017ad74a496783dfee93c29a0ed3, type: 3}
-  m_Name: TestGroup
+  m_Name: Stage
   m_EditorClassIdentifier: Assembly-CSharp::SceneGroupSO
   sceneGroup:
     Scenes:
     - Reference:
-        asset: {fileID: 102900000, guid: 2ff80acddf9c5684aabf9f55371b14fe, type: 3}
-        guid: 2ff80acddf9c5684aabf9f55371b14fe
+        asset: {fileID: 102900000, guid: b623af03a5c88d84a806b4f9289ad177, type: 3}
+        guid: b623af03a5c88d84a806b4f9289ad177
       SceneType: 0
