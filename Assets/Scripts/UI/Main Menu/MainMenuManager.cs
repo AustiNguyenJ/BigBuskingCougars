@@ -6,41 +6,50 @@ using UnityEngine;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Tooltip("First State is Default State which should be OnMainMenu")]
-    [SerializeReference] 
-    public List<MenuState> menuStates = new List<MenuState>();
+    [SerializeReference] MenuState OnMainMenu;
+    [SerializeReference] MenuState LocationSelection;
+
+    MenuState prevMenuState;
     MenuState currentMenuState;
     
     
     [ReadOnly, ShowInInspector]
     string currentStateName => currentMenuState != null ? currentMenuState.GetType().ToString() : "Null";
 
+    void Awake()
+    {
+        // provide each state a reference to the manager for changing states
+        OnMainMenu.SetManager(this);
+        LocationSelection.SetManager(this);
+    }
+
     void Start()
     {
-        foreach (var state in menuStates)
-        {
-            state.SetManager(this);
-        }
-        
-        ChangeState(menuStates[0]);
+        ChangeToOnMainMenu();   
     }
+
+    public void ChangeToOnMainMenu() => ChangeState(OnMainMenu);
+    public void ChangeToLocationSelection() => ChangeState(LocationSelection);
+    public void ChangeToPreviousState() => ChangeState(prevMenuState);
     
-    public void ChangeState(MenuState newState)
+    
+    void ChangeState(MenuState newState)
     {
         if (Validate.AnyNull(newState)) return;
         
         if (currentMenuState != null)
+        {
             currentMenuState.OnExit();
+            prevMenuState = currentMenuState;
+        }
         currentMenuState = newState;
         currentMenuState.OnEnter();
     }
 
-    public void ExitGame()
+    void OnDestroy()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        if (currentMenuState != null)
+            currentMenuState.OnExit();
+        currentMenuState = null;
     }
 }

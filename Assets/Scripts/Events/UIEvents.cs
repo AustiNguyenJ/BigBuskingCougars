@@ -11,7 +11,8 @@ namespace Events.UI
     {
         [InlineEditor] public SceneGroupSO locationSceneGroupAsset;
     }
-    
+
+    public struct OnBackButtonSelected : IMainMenuEvent { }
     
     public struct SwitchSettingTabEvent
     {

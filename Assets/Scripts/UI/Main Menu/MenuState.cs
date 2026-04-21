@@ -22,7 +22,6 @@ public abstract class MenuState
 public class OnMainMenu : MenuState
 {
     [SerializeField] CanvasGroup mainMenuGroup;
-    [SerializeReference] MenuState locationSelectionState;
     
     public override void OnEnter()
     {
@@ -34,7 +33,7 @@ public class OnMainMenu : MenuState
     
     public void OnPlayButtonSelected()
     {
-        manager.ChangeState(locationSelectionState);
+        manager.ChangeToLocationSelection();
     }
 
     public override void OnExit()
@@ -65,20 +64,27 @@ public class LocationSelectionMenu : MenuState
         locationSelectionGroup.blocksRaycasts = true;
         locationSelectionGroup.interactable = true;
         GlobalEventAsset.Instance.StartListening<OnLocationSelected>(OnLocationSelected);
-
+        GlobalEventAsset.Instance.StartListening<OnBackButtonSelected>(OnBackButtonSelected);
     }
-
-    void OnLocationSelected(OnLocationSelected data)
-    {
-        GlobalEventAsset.Instance.TriggerEvent(new RequestSceneLoadEvent { sceneGroupToLoad = data.locationSceneGroupAsset });
-    }
-
+    
     public override void OnExit()
     {
         locationSelectionGroup.alpha = 0;
         locationSelectionGroup.blocksRaycasts = false;
         locationSelectionGroup.interactable = false;
         GlobalEventAsset.Instance.StopListening<OnLocationSelected>(OnLocationSelected);
-
+        GlobalEventAsset.Instance.StopListening<OnBackButtonSelected>(OnBackButtonSelected);
     }
+    
+
+    void OnLocationSelected(OnLocationSelected data)
+    {
+        GlobalEventAsset.Instance.TriggerEvent(new RequestSceneLoadEvent { sceneGroupToLoad = data.locationSceneGroupAsset });
+    }
+
+    void OnBackButtonSelected()
+    {
+        manager.ChangeToPreviousState();
+    }
+
 }

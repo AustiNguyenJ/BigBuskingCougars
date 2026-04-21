@@ -9,6 +9,9 @@ public class InvokePlayButtonSelectedEvent : InvokeMainMenuEvent<OnPlayButtonSel
 public class InvokeLocationSelectedEvent : InvokeMainMenuEvent<OnLocationSelected> {}
 
 [Serializable]
+public class InvokeBackButtonSelectedEvent : InvokeMainMenuEvent<OnBackButtonSelected> { }
+
+[Serializable]
 public class InvokeMainMenuEvent<T>: ButtonAction where T : struct, IMainMenuEvent
 {
     public T eventStructRef;
