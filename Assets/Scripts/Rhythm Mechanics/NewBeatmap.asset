@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f71228eb826545d5a87f08ef795d9250, type: 3}
+  m_Name: NewBeatmap
+  m_EditorClassIdentifier: Assembly-CSharp::Beatmap
+  notes:
+  - time: 2.6693332
+    type: 0
+  - time: 3.1813333
+    type: 0
+  - time: 3.7146666
+    type: 0
+  - time: 4.205333
+    type: 0
+  - time: 4.7173333
+    type: 0
+  - time: 5.144
+    type: 0
+  - time: 5.656
+    type: 0
+  - time: 6.1466665
+    type: 0
+  - time: 6.68
+    type: 0
+  - time: 7.1493335
+    type: 0
+  - time: 7.6186666
+    type: 0
+  - time: 8.109333
+    type: 0
+  - time: 8.514667
+    type: 0
+  - time: 10.242666
+    type: 0
+  - time: 10.690666
+    type: 0
+  - time: 11.16
+    type: 0
+  - time: 11.373333
+    type: 0
+  - time: 11.650666
+    type: 0
+  - time: 12.12
+    type: 0
+  - time: 12.610666
+    type: 0
+  - time: 13.08
+    type: 0
+  - time: 13.293333
+    type: 0
+  - time: 13.549334
+    type: 0
+  - time: 13.997334
+    type: 0
+  - time: 14.509334
+    type: 0
+  - time: 14.936
+    type: 0
+  - time: 15.170667
+    type: 0
+  - time: 17.730667
+    type: 0
+  - time: 18.2
+    type: 0
+  - time: 18.648
+    type: 0
+  - time: 18.861334
+    type: 0
+  - time: 19.117332
+    type: 0
+  - time: 19.629333
+    type: 0
+  - time: 20.141333
+    type: 0
+  - time: 20.610666
+    type: 0
+  - time: 20.802668
+    type: 0
+  - time: 21.08
+    type: 0
+  - time: 21.506666
+    type: 0
+  - time: 21.997334
+    type: 0
+  - time: 22.488
+    type: 0
+  - time: 22.829334
+    type: 0
+  - time: 23.32
+    type: 0
+  - time: 23.853333
+    type: 0
+  - time: 24.28
+    type: 0
+  - time: 24.770666
+    type: 0
+  - time: 25.261333
+    type: 0
+  - time: 25.709333
+    type: 0
+  - time: 26.2
+    type: 0
+  - time: 26.392
+    type: 0
+  - time: 26.648
+    type: 0
+  - time: 27.16
+    type: 0
+  - time: 27.650667
+    type: 0
+  - time: 28.077333
+    type: 0
+  - time: 28.290667
+    type: 0
+  - time: 28.568
+    type: 0
+  - time: 29.016
+    type: 0
+  - time: 29.506666
+    type: 0
+  - time: 29.933332
+    type: 0
+  - time: 30.189333
+    type: 0
+  - time: 30.872
+    type: 0
+  - time: 31.405333
+    type: 0
+  - time: 31.896
+    type: 0
+  - time: 32.301334
+    type: 0
+  - time: 32.792
+    type: 0
+  - time: 33.24
+    type: 0
+  - time: 33.688
+    type: 0
+  - time: 33.88
+    type: 0
+  - time: 34.114666
+    type: 0
+  - time: 34.605335
+    type: 0
+  - time: 35.117332
+    type: 0
+  - time: 35.565334
+    type: 0
+  - time: 35.778667
+    type: 0
+  - time: 36.034668
+    type: 0
+  - time: 36.482666
+    type: 0
+  - time: 36.994667
+    type: 0
+  - time: 37.442665
+    type: 0
+  - time: 37.698666
+    type: 0
