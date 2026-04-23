@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-// event used for requesting scene transitions
+[Serializable]
 public struct RequestSceneLoadEvent
 {
     public SceneGroupSO sceneGroupToLoad;
@@ -14,7 +14,6 @@ public struct OnSceneGroupLoadedEvent
 {
     public SceneGroupSO loadedGroup;
 }
-
 
 namespace Systems.SceneManagement {
     public class SceneLoader : MonoBehaviour { 
@@ -28,7 +27,6 @@ namespace Systems.SceneManagement {
         public SceneGroupSO startingSceneAsset;
         public bool LoadGroupOnStart = false;
         
-        
         float targetProgress;
         bool isLoading;
 
@@ -39,7 +37,6 @@ namespace Systems.SceneManagement {
             if (LoadGroupOnStart)
                 Load(startingSceneAsset);
         }
-
 
         void OnEnable()
         {
@@ -66,6 +63,12 @@ namespace Systems.SceneManagement {
 
         async void Load(SceneGroupSO sceneGroupToLoad)
         {
+            if (isLoading)
+            {
+                Debug.LogWarning($"Load request for {sceneGroupToLoad.name} canceled. A scene group is already loading.");
+                return;
+            }
+
             try
             {
                 await LoadSceneGroup(sceneGroupToLoad);
@@ -74,10 +77,12 @@ namespace Systems.SceneManagement {
             catch (Exception e)
             {
                 Debug.LogException(e);
+                EnableLoadingCanvas(false); 
             }
         }
 
        public async Task LoadSceneGroup(SceneGroupSO sceneGroupSO) {
+            if (isLoading) return;
            
           //  loadingBar.fillAmount = 0f;
             targetProgress = 1f;
@@ -100,6 +105,8 @@ namespace Systems.SceneManagement {
         }
         
         public async Task LoadDependenciesAdditive(SceneGroupSO sceneGroupSO) {
+            if (isLoading) return;
+
            // loadingBar.fillAmount = 0f;
             targetProgress = 1f;
 
@@ -113,9 +120,6 @@ namespace Systems.SceneManagement {
             EnableLoadingCanvas(false);
         }
     }
-    
-    
-    
     
     public class LoadingProgress : IProgress<float> {
         public event Action<float> Progressed;

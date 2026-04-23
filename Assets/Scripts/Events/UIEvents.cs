@@ -3,19 +3,26 @@ using Sirenix.OdinInspector;
 
 namespace Events.UI
 {
-    // Main Menu Events
-    public struct OnPlayButtonSelected : IMainMenuEvent { }
+    #region MainMenuEvents
+    public struct OnPlayButtonSelected : IUiEvent { }
 
     [Serializable]
-    public struct OnLocationSelected : IMainMenuEvent
+    public struct OnLocationSelected : IUiEvent
     {
         [InlineEditor] public SceneGroupSO locationSceneGroupAsset;
     }
-
-    public struct OnBackButtonSelected : IMainMenuEvent { }
-    
-    public struct SwitchSettingTabEvent
+    public struct SwitchSettingTabEvent : IUiEvent
     {
         public SettingTabType typeToSwitchTo;
     }
+    #endregion
+
+    #region UniversalUIEvents
+    public struct OnBackButtonSelected : IUiEvent { }
+    #endregion
+    
+    
+    #region WristMenuEvents
+    public struct WristMenuViewLocationsEvent : IUiEvent { }
+    #endregion
 }

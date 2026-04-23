@@ -38,18 +38,13 @@ public class OnMainMenu : MenuState
 
     public override void OnExit()
     {
-        Debug.Log($"OnExit called. CanvasGroup ref: {mainMenuGroup}", mainMenuGroup);
-        
-        if (mainMenuGroup == null)
-        {
-            Debug.LogWarning("CanvasGroup is NULL or destroyed!");
-            return;
-        }
+        GlobalEventAsset.Instance.StopListening<OnPlayButtonSelected>(OnPlayButtonSelected);
 
+        if (mainMenuGroup == null) return;
+        
         mainMenuGroup.alpha = 0;
         mainMenuGroup.blocksRaycasts = false;
         mainMenuGroup.interactable = false;
-        GlobalEventAsset.Instance.StopListening<OnPlayButtonSelected>(OnPlayButtonSelected);
     }
 }
 
