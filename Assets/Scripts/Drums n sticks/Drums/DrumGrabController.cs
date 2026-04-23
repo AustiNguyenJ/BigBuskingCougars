@@ -7,8 +7,8 @@ public class DrumGrabController : MonoBehaviour
     public XRNode leftHand = XRNode.LeftHand;
     public XRNode rightHand = XRNode.RightHand;
 
-    public float followSpeed = 20f;
-    public float rotateSpeed = 20f;
+    public float followSpeed = 40f;
+    public float rotateSpeed = 40f;
 
     private InputDevice leftDevice;
     private InputDevice rightDevice;

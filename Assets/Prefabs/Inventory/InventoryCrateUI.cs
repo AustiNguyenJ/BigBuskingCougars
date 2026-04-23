@@ -25,7 +25,7 @@ public class InventoryCrateUI : MonoBehaviour
             GameObject rowObj = Instantiate(crateRowPrefab, crateContainer);
             CrateRowUI row = rowObj.GetComponent<CrateRowUI>();
 
-            row.Setup(crate.displayName, "Open", () =>
+            row.Setup(crate.displayName, "Buy", () =>
             {
                 crateController.OpenCrate(crate);
                 // Optionally refresh inventory UI

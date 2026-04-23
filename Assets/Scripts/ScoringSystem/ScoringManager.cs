@@ -54,7 +54,11 @@ public class ScoringManager : MonoBehaviour
     void Awake()
     {
         Debug.Log("ScoringManager Awake called", this);
-
+    
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.GetComponent<PlayerData>();
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
