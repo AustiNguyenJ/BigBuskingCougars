@@ -6,6 +6,9 @@ public class ScoringManager : MonoBehaviour
 {
     public static ScoringManager Instance;
 
+    [Header("Player Reference")]
+    public PlayerData player;
+    
     [Header("Floating Score")]
     public GameObject floatingScorePrefab;
 
@@ -34,7 +37,15 @@ public class ScoringManager : MonoBehaviour
     public float pulseDuration = 0.1f;
     public float maxPulseTilt = 10f;
 
-    int totalScore = 0;
+
+    
+    void UpdateScoreUI()
+    {
+        if (scoreText != null && player != null)
+        {
+            scoreText.text = "Boings : " + player.money;
+        }
+    }
 
     Vector3 baseScale;
     Quaternion baseRotation;
@@ -67,7 +78,11 @@ public class ScoringManager : MonoBehaviour
     public Color ProcessHit(float velocity)
     {
         int amount = GetScoreFromVelocity(velocity);
-        totalScore += amount;
+        
+        if (player != null)
+        {
+            player.AddMoney(amount);
+        }
 
         UpdateScoreUI();
 
@@ -119,14 +134,7 @@ public class ScoringManager : MonoBehaviour
         scoreText.transform.localRotation = baseRotation;
         pulseCoroutine = null;
     }
-
-    void UpdateScoreUI()
-    {
-        if (scoreText != null)
-        {
-            scoreText.text = "Score: " + totalScore;
-        }
-    }
+    
 
     void ShowFloatingScore(int amount, Color color)
     {
@@ -194,12 +202,14 @@ public class ScoringManager : MonoBehaviour
 
     public int GetTotalScore()
     {
-        return totalScore;
+        return player != null ? player.money : 0;
     }
 
     public void ResetScore()
     {
-        totalScore = 0;
+        if (player != null)
+            player.money = 0;
+
         UpdateScoreUI();
 
         if (scoreText != null)
