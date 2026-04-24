@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Steel Pan 1
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: SP1
+  color: Yellow
+  drumName: Steel Pan
   prefab: {fileID: 7488589178707881883, guid: ec99e5b20c5c4b345ab50fe8a446fe4f, type: 3}
   rarity: 0

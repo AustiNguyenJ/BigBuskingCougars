@@ -57,7 +57,7 @@ public class DrumSurface : MonoBehaviour
             color = ScoringManager.Instance.ProcessHit(velocity);
         }
 
-        GlobalEventAsset.Instance.TriggerEvent(new OnDrumHit());
+        // GlobalEventAsset.Instance.TriggerEvent(new OnDrumHit());
         VisualResponseSystem.TriggerDrumHit(power, hitPosition, hand, color);
     }
 }

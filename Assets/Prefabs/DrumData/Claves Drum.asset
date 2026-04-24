@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Claves Drum
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: OG2
+  color: Orange
+  drumName: Claves Drum
   prefab: {fileID: 9164332813602806270, guid: 88b699b47505eb949b918b494c58eaf8, type: 3}
   rarity: 1

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: HighhatCymbal
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: FK2
+  color: Yellow
+  drumName: High Hat Cymbal
   prefab: {fileID: 5318903664750285235, guid: 13be9adaccbb554448fc30b6c74c3903, type: 3}
   rarity: 0

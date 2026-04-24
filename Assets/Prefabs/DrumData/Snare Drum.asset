@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Snare Drum
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: OG3
+  color: Orange
+  drumName: Snare Drum
   prefab: {fileID: 8225789649440990590, guid: 9aec8167f4f7c8c4c9c2b994b6b36f5b, type: 3}
   rarity: 0

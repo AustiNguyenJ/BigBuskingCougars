@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: FloorTom
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: FK1
+  color: Yellow
+  drumName: Tom Drum
   prefab: {fileID: 8253949076455810182, guid: eaf5a8f09a84269429ad534311ed4033, type: 3}
   rarity: 0

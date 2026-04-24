@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Bass Drum
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: OG1
+  color: Black
+  drumName: Bass Drum
   prefab: {fileID: 3990181462990588358, guid: 8a900156cc9db4548814d6315cf35e8f, type: 3}
   rarity: 0

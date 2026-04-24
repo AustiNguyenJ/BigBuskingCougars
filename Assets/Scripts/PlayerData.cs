@@ -15,4 +15,9 @@ public class PlayerData : MonoBehaviour
         money -= amount;
         return true;
     }
+
+    public int CheckMoney()
+    {
+        return money;
+    }
 }

@@ -12,6 +12,8 @@ public enum DrumRarity
 public class DrumData : ScriptableObject
 {
     public string drumId;
+    public string color;
+    public string drumName;
     public GameObject prefab;
     public DrumRarity rarity;
 }

@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Toon01__StylSurf_Single 4
+  m_Name: Toon01__StylSurf_Single 8
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - DR_ENABLE_LIGHTMAP_DIR
   - _CELPRIMARYMODE_SINGLE
   - _DETAILMAPBLENDINGMODE_MULTIPLY
   - _GRADIENTSPACE_WORLD
@@ -171,10 +170,10 @@ Material:
     - _VertexExtrusionSmoothNormals: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.5, g: 0.26623422, b: 0.24292454, a: 1}
+    - _BaseColor: {r: 0.2830189, g: 0.1687923, b: 0.13216448, a: 1}
     - _Color: {r: 1, g: 0.6618828, b: 0.26886788, a: 1}
     - _ColorCelShadow: {r: 0.38581347, g: 0.38787434, b: 0.9622642, a: 1}
-    - _ColorDim: {r: 0.2830189, g: 0.11827911, b: 0.07876469, a: 1}
+    - _ColorDim: {r: 0.1509434, g: 0.083659664, b: 0.06763973, a: 1}
     - _ColorDimCurve: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimExtra: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimSteps: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}

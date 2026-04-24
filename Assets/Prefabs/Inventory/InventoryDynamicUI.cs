@@ -32,21 +32,21 @@ public class InventoryDynamicUI : MonoBehaviour
             GameObject rowObj = Instantiate(rowPrefab, allDrumsContainer);
             InventoryRowUI row = rowObj.GetComponent<InventoryRowUI>();
 
-            string display = $"{drum.drumId} ({drum.rarity})";
+            string display = $"{drum.drumName}  [{drum.drumId} {drum.rarity}]";
 
             row.Setup(
                 display,
                 "Add",
                 () =>
                 {
-                    InventoryManager.Instance.AddDrum(drum.drumId);
+                    InventoryManager.Instance.AddDrum(drum);
                     RefreshUI();
-                },
-                "Remove",
-                () =>
-                {
-                    InventoryManager.Instance.RemoveDrum(drum.drumId);
-                    RefreshUI();
+                // },
+                // "Remove",
+                // () =>
+                // {
+                //     InventoryManager.Instance.RemoveDrum(drum.drumId);
+                //     RefreshUI();
                 }
             );
         }
@@ -56,13 +56,13 @@ public class InventoryDynamicUI : MonoBehaviour
     {
         PlayerInventory inventory = InventoryManager.Instance.GetInventory();
 
-        foreach (string drumId in inventory.ownedDrumIds)
+        foreach (DrumData drumId in inventory.ownedDrumIds)
         {
             GameObject rowObj = Instantiate(rowPrefab, ownedDrumsContainer);
             InventoryRowUI row = rowObj.GetComponent<InventoryRowUI>();
 
             bool equipped = inventory.equippedDrumIds.Contains(drumId);
-            string display = equipped ? $"{drumId} [EQUIPPED]" : drumId;
+            string display =  $"{drumId.color} {drumId.drumName}";
 
             row.Setup(
                 display,
@@ -75,14 +75,14 @@ public class InventoryDynamicUI : MonoBehaviour
                         InventoryManager.Instance.EquipDrum(drumId);
 
                     RefreshUI();
-                },
-                "Remove",
-                () =>
-                {
-                    if (equipped)
-                        InventoryManager.Instance.UnequipDrum(drumId);
-                    InventoryManager.Instance.RemoveDrum(drumId);
-                    RefreshUI();
+                // },
+                // "Remove",
+                // () =>
+                // {
+                //     if (equipped)
+                //         InventoryManager.Instance.UnequipDrum(drumId);
+                //     InventoryManager.Instance.RemoveDrum(drumId);
+                //     RefreshUI();
                 }
             );
         }

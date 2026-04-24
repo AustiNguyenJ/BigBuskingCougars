@@ -1,21 +1,43 @@
 ﻿using UnityEngine;
 
+public enum CrateResult
+{
+    Error,
+    Success,
+    NotEnoughMoney
+}
 public class CrateController : MonoBehaviour
 {
     public CrateOpener crateOpener;
     public GameObject cratePrefab;
     public Transform crateSpawnPoint;
+    public PlayerData player;
 
-    public void OpenCrate(CrateData crate)
+    
+    void Awake()
     {
-        if (crate == null || crateOpener == null) return;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.GetComponent<PlayerData>();
+    }
+    
+    public CrateResult OpenCrate(CrateData crate)
+    {
+        if (crate == null || crateOpener == null) 
+            return CrateResult.Error;
 
         // 1️⃣ Get drum to give
         DrumData droppedDrum = crateOpener.OpenCrate(crate);
-        if (droppedDrum == null) return;
-
+        if (droppedDrum == null) 
+            return CrateResult.Error;
+        
+        //Spend Money
+        if (player.CheckMoney() < crate.price)
+            return CrateResult.NotEnoughMoney;
+        player.SpendMoney(crate.price);
+        
         // 2️⃣ Add drum to inventory
-        InventoryManager.Instance.AddDrum(droppedDrum.drumId);
+        InventoryManager.Instance.AddDrum(droppedDrum);
 
         // 3️⃣ Spawn crate prefab
         GameObject crateObj = Instantiate(cratePrefab, crateSpawnPoint.position, crateSpawnPoint.rotation);
@@ -27,5 +49,7 @@ public class CrateController : MonoBehaviour
         crate3D.OpenCrate(droppedDrum);
 
         Debug.Log($"You received: {droppedDrum.name} ({droppedDrum.rarity})");
+
+        return CrateResult.Success;
     }
 }

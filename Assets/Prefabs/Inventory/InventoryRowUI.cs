@@ -13,19 +13,19 @@ public class InventoryRowUI : MonoBehaviour
     public void Setup(
         string displayText,
         string leftLabel,
-        UnityEngine.Events.UnityAction leftAction,
-        string rightLabel,
-        UnityEngine.Events.UnityAction rightAction)
+        UnityEngine.Events.UnityAction leftAction)
+        // string rightLabel,
+        // UnityEngine.Events.UnityAction rightAction)
     {
         drumText.text = displayText;
 
         leftButton.onClick.RemoveAllListeners();
-        rightButton.onClick.RemoveAllListeners();
+        // rightButton.onClick.RemoveAllListeners();
 
         leftButtonText.text = leftLabel;
-        rightButtonText.text = rightLabel;
+        // rightButtonText.text = rightLabel;
 
         leftButton.onClick.AddListener(leftAction);
-        rightButton.onClick.AddListener(rightAction);
+        // rightButton.onClick.AddListener(rightAction);
     }
 }

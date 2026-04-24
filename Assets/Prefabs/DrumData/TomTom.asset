@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: TomTom
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: OG4
+  color: Red
+  drumName: Tom Drum
   prefab: {fileID: 4207482331047010751, guid: e90a98c5cda8f3d4e82e92d8b99d4ae3, type: 3}
   rarity: 0

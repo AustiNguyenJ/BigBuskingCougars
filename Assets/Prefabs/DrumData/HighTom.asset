@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: HighTom
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: FK3
+  color: Brown
+  drumName: Tom Drum
   prefab: {fileID: 3135478001167645930, guid: 5d953da443b7d1d48991a7a0d5fd06d4, type: 3}
   rarity: 0

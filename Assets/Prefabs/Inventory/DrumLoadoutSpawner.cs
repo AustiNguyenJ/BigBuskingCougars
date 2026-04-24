@@ -7,7 +7,8 @@ public class DrumLoadoutSpawner : MonoBehaviour
 
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
 
-    private readonly List<GameObject> spawnedDrums = new List<GameObject>();
+    
+    private Dictionary<DrumData, GameObject> drumMap = new Dictionary<DrumData, GameObject>();
 
     void Awake()
     {
@@ -20,51 +21,51 @@ public class DrumLoadoutSpawner : MonoBehaviour
         Instance = this;
     }
 
-    public void RefreshLoadout()
+    public void SpawnDrum(DrumData drum)
     {
-        ClearSpawnedDrums();
+        List<DrumData> equippedDrums = InventoryManager.Instance.GetEquippedDrums();
 
-        List<string> equippedDrumIds = InventoryManager.Instance.GetEquippedDrumIds();
+        if (!equippedDrums.Contains(drum))
+            return;
+            
+        if (drum == null)
+            return;
 
-        for (int i = 0; i < equippedDrumIds.Count; i++)
+        if (drum.prefab == null)
         {
-            if (i >= spawnPoints.Count)
-            {
-                Debug.LogWarning("Not enough spawn points for equipped drums.");
-                break;
-            }
+            Debug.LogWarning($"Drum '{drum.drumId}' has no prefab assigned.");
+            return;
+        }
 
-            string drumId = equippedDrumIds[i];
-            DrumData drumData = DrumDatabase.Instance.GetDrumById(drumId);
+        Transform spawnPoint = spawnPoints[0];
+        GameObject spawned = Instantiate(
+            drum.prefab,
+            spawnPoint.position,
+            spawnPoint.rotation
+        );
 
-            if (drumData == null)
-                continue;
+        drumMap[drum] = spawned;
+    }
 
-            if (drumData.prefab == null)
-            {
-                Debug.LogWarning($"Drum '{drumId}' has no prefab assigned.");
-                continue;
-            }
+    public void DeSpawnDrum(DrumData drum)
+    {
+        if (drum == null)
+            return;
 
-            Transform spawnPoint = spawnPoints[i];
-            GameObject spawned = Instantiate(
-                drumData.prefab,
-                spawnPoint.position,
-                spawnPoint.rotation
-            );
-
-            spawnedDrums.Add(spawned);
+        if (drumMap.TryGetValue(drum, out GameObject spawned))
+        {
+            Destroy(spawned);
+            drumMap.Remove(drum);
         }
     }
 
-    void ClearSpawnedDrums()
+    public void ClearSpawnedDrums()
     {
-        for (int i = 0; i < spawnedDrums.Count; i++)
+        foreach (GameObject drum in drumMap.Values)
         {
-            if (spawnedDrums[i] != null)
-                Destroy(spawnedDrums[i]);
+            Destroy(drum);
         }
 
-        spawnedDrums.Clear();
+        drumMap.Clear();
     }
 }

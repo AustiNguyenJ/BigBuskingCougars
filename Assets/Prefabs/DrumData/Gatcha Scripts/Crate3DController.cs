@@ -97,6 +97,7 @@ public class Crate3DController : MonoBehaviour
         }
 
         // Optional: Destroy crate object if you want
-         Destroy(spawnedDrum);
+        Destroy(spawnedDrum);
+        Destroy(gameObject);
     }
 }

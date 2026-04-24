@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -7,6 +9,8 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField] private PlayerInventory inventory = new PlayerInventory();
     [SerializeField] private int maxEquippedDrums = 6;
+
+    
 
     void Awake()
     {
@@ -19,12 +23,12 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
-    public bool HasDrum(string drumId)
+    public bool HasDrum(DrumData drumId)
     {
         return inventory.ownedDrumIds.Contains(drumId);
     }
 
-    public void AddDrum(string drumId)
+    public void AddDrum(DrumData drumId)
     {
         if (HasDrum(drumId))
             return;
@@ -33,7 +37,7 @@ public class InventoryManager : MonoBehaviour
         Debug.Log($"Added drum: {drumId}");
     }
 
-    public bool RemoveDrum(string drumId)
+    public bool RemoveDrum(DrumData drumId)
     {
         if (!HasDrum(drumId))
         {
@@ -48,12 +52,12 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
-    public bool IsEquipped(string drumId)
+    public bool IsEquipped(DrumData drumId)
     {
         return inventory.equippedDrumIds.Contains(drumId);
     }
 
-    public bool EquipDrum(string drumId)
+    public bool EquipDrum(DrumData drumId)
     {
         if (!HasDrum(drumId))
         {
@@ -76,13 +80,13 @@ public class InventoryManager : MonoBehaviour
         inventory.equippedDrumIds.Add(drumId);
 
         if (DrumLoadoutSpawner.Instance != null)
-            DrumLoadoutSpawner.Instance.RefreshLoadout();
+            DrumLoadoutSpawner.Instance.SpawnDrum(drumId);
 
         Debug.Log($"Equipped drum: {drumId}");
         return true;
     }
 
-    public bool UnequipDrum(string drumId)
+    public bool UnequipDrum(DrumData drumId)
     {
         if (!IsEquipped(drumId))
         {
@@ -92,13 +96,13 @@ public class InventoryManager : MonoBehaviour
 
         inventory.equippedDrumIds.Remove(drumId);
         if (DrumLoadoutSpawner.Instance != null)
-            DrumLoadoutSpawner.Instance.RefreshLoadout();
+            DrumLoadoutSpawner.Instance.DeSpawnDrum(drumId);
 
         Debug.Log($"Unequipped drum: {drumId}");
         return true;
     }
 
-    public List<string> GetEquippedDrumIds()
+    public List<DrumData> GetEquippedDrums()
     {
         return inventory.equippedDrumIds;
     }
@@ -106,5 +110,21 @@ public class InventoryManager : MonoBehaviour
     public PlayerInventory GetInventory()
     {
         return inventory;
+    }
+    
+    void OnEnable()
+    {
+        GlobalEventAsset.Instance.StartListening<RequestSceneLoadEvent>(ClearEquipped);
+    }
+
+    void OnDisable()
+    {
+        GlobalEventAsset.Instance.StopListening<RequestSceneLoadEvent>(ClearEquipped);
+    }
+    
+    private void ClearEquipped()
+    {
+        DrumLoadoutSpawner.Instance.ClearSpawnedDrums();
+        GetInventory().equippedDrumIds.Clear();
     }
 }

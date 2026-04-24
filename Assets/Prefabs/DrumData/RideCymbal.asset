@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: RideCymbal
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: FK4
+  color: Yellow
+  drumName: Ride Cymbal
   prefab: {fileID: 988844615700301789, guid: 6489ccbc123194b4b9b3dd05001f22e5, type: 3}
   rarity: 0

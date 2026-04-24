@@ -6,6 +6,7 @@ public class InventoryCrateUI : MonoBehaviour
 {
     [SerializeField] private Transform crateContainer;
     [SerializeField] private GameObject crateRowPrefab;
+    [SerializeField] private GameObject popup;
     [SerializeField] private List<CrateData> availableCrates;
     [SerializeField] private CrateController crateController;
 
@@ -27,12 +28,35 @@ public class InventoryCrateUI : MonoBehaviour
 
             row.Setup(crate.displayName, "Buy", () =>
             {
-                crateController.OpenCrate(crate);
-                // Optionally refresh inventory UI
-                InventoryDynamicUI dynamicUI = FindObjectOfType<InventoryDynamicUI>();
-                if (dynamicUI != null) dynamicUI.RefreshUI();
+                CrateResult result = crateController.OpenCrate(crate);
+                HandleCrateResult(result, row, crate);
             });
         }
+    }
+    
+    private void HandleCrateResult(CrateResult result, CrateRowUI row, CrateData crate)
+    {
+        switch (result)
+        {
+            case CrateResult.Error:
+                Debug.LogError("Crate error.");
+                popup.GetComponent<UIPopup>().Show("Something went wrong.");
+                break;
+
+            case CrateResult.Success:
+                popup.GetComponent<UIPopup>().Show("Crate.");
+                Debug.Log("Purchased!");
+                InventoryDynamicUI dynamicUI = FindObjectOfType<InventoryDynamicUI>();
+                if (dynamicUI != null) dynamicUI.RefreshUI();
+                break;
+
+            case CrateResult.NotEnoughMoney:
+                Debug.Log("Not enough money.");
+                popup.GetComponent<UIPopup>().Show("Not enough Boings");
+                break;
+        }
+        
+        RefreshUI();
     }
 
     void ClearContainer(Transform container)

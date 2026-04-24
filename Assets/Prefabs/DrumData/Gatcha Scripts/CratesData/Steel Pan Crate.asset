@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4a1c8f79bd40fb4887ebe1ffb29c4e1, type: 3}
-  m_Name: Simple Crate
+  m_Name: Steel Pan Crate
   m_EditorClassIdentifier: Assembly-CSharp::CrateData
-  crateId: Simple_Crate
-  displayName: Simple Crate
-  lootTable: {fileID: 11400000, guid: 47736b584c120ed44aa73c943dbc6114, type: 2}
+  crateId: SteelPan_Crate
+  displayName: Steel Pan Crate
+  price: 500
+  lootTable: {fileID: 11400000, guid: b22c63dc2cfd9d9418bdbb6bd0b03588, type: 2}

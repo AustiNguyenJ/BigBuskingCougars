@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Snare
   m_EditorClassIdentifier: Assembly-CSharp::DrumData
   drumId: FK5
+  color: Green
+  drumName: Snare Drum
   prefab: {fileID: 5466269575259703011, guid: c32cfd7254057e942a9ed999e9ba6c44, type: 3}
   rarity: 0
