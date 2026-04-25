@@ -12,13 +12,14 @@ public class CrateController : MonoBehaviour
     public GameObject cratePrefab;
     public Transform crateSpawnPoint;
     public PlayerData player;
-
+    public ScoringManager ScoringManager;
     
     void Awake()
     {
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.GetComponent<PlayerData>();
+        ScoringManager = FindObjectOfType<ScoringManager>();
     }
     
     public CrateResult OpenCrate(CrateData crate)
@@ -35,6 +36,7 @@ public class CrateController : MonoBehaviour
         if (player.CheckMoney() < crate.price)
             return CrateResult.NotEnoughMoney;
         player.SpendMoney(crate.price);
+        ScoringManager.UpdateScoreUI();
         
         // 2️⃣ Add drum to inventory
         InventoryManager.Instance.AddDrum(droppedDrum);

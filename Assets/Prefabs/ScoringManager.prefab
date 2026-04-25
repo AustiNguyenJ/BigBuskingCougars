@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe46c398300e024f8b7254d7ce96d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoringManager
+  player: {fileID: 0}
   floatingScorePrefab: {fileID: 9124704917773131361, guid: 621fec88ae42719429f0f7066e5929f6, type: 3}
   spawnArea: {fileID: 1030493971801718189}
   minVelocity: 0
@@ -219,7 +220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: XXXX'
+  m_text: 'Boings : XXXX'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4492dc6781ab0064ca1c898a15f39999, type: 2}
   m_sharedMaterial: {fileID: -9222176519227424859, guid: 4492dc6781ab0064ca1c898a15f39999, type: 2}

@@ -39,7 +39,7 @@ public class ScoringManager : MonoBehaviour
 
 
     
-    void UpdateScoreUI()
+    public void UpdateScoreUI()
     {
         if (scoreText != null && player != null)
         {
@@ -154,7 +154,7 @@ public class ScoringManager : MonoBehaviour
         FloatingScore floatingScore = scoreObj.GetComponent<FloatingScore>();
         if (floatingScore != null)
         {
-            floatingScore.SetText("+" + amount, color);
+            floatingScore.SetText("+" + amount + "b", color);
         }
         else
         {
