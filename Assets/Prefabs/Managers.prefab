@@ -460,70 +460,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8233962148573241828}
     m_Modifications:
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.02364456
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.023644531
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.70670754
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.7067152
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -271.74652
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -86.168
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -89.991
-      objectReference: {fileID: 0}
-    - target: {fileID: 667710877517062190, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 269.991
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.709937
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.70346034
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.016101029
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.029561171
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -271.7381
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 86.262
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 441.38202
-      objectReference: {fileID: 0}
-    - target: {fileID: 3667586904112450688, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -277.527
-      objectReference: {fileID: 0}
     - target: {fileID: 3926720147101008931, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.223
@@ -567,20 +503,6 @@ PrefabInstance:
     - target: {fileID: 4742971631570002081, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
       propertyPath: m_Name
       value: InventoryManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761324463475697122, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_text
-      value: "Welcome!\n\n\nEarn boings by playing \n\nUnlock more drums by purchasing
-        crates.\n\n\n\n\nEquip the drum in your Inventory.\n\nUse the grip button
-        to grab and move drums.\n\n\n\n\n"
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761324463475697122, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761324463475697122, guid: 0e9c08ead719cc846b8fffed0eb93522, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
