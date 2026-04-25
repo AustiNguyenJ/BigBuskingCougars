@@ -1440,9 +1440,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1227668026}
+      - m_Target: {fileID: 363864017}
         m_TargetAssemblyTypeName: ButtonActionExecutor, Assembly-CSharp
-        m_MethodName: Execute
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4369,7 +4369,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514345744}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4604,9 +4604,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1227668026}
+      - m_Target: {fileID: 1528954430}
         m_TargetAssemblyTypeName: ButtonActionExecutor, Assembly-CSharp
-        m_MethodName: Execute
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
