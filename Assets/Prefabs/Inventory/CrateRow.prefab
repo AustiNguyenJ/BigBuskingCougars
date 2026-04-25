@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 75361760334807420}
   - component: {fileID: 5595466637556350329}
   - component: {fileID: 4193086731383013153}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CrateRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2114014223558444707}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VerticalLayout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
