@@ -1,5 +1,4 @@
 using System;
-using ExternPropertyAttributes.Editor;
 using NPC;
 using UnityEngine;
 using Random = UnityEngine.Random;

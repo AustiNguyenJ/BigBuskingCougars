@@ -17,8 +17,12 @@ public class DrumSurface : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         DrumStickXR stick = other.GetComponent<DrumStickXR>();
-
         if (stick == null) return;
+
+        //testing for visual offset mechanic--Tate
+        StickVisualOffset visual = other.GetComponent<StickVisualOffset>();
+        if (visual != null) visual.OnEnterDrumSurface(transform);
+
 
         if (Time.time - lastHitTime < 0.05f)
             return;
@@ -60,4 +64,14 @@ public class DrumSurface : MonoBehaviour
         // GlobalEventAsset.Instance.TriggerEvent(new OnDrumHit());
         VisualResponseSystem.TriggerDrumHit(power, hitPosition, hand, color);
     }
+
+     private void OnTriggerExit(Collider other)
+    {
+        DrumStickXR stick = other.GetComponent<DrumStickXR>();
+        if (stick == null) return;
+
+        StickVisualOffset visual = other.GetComponent<StickVisualOffset>();
+        if (visual != null) visual.OnExitDrumSurface();
+    }
+
 }
