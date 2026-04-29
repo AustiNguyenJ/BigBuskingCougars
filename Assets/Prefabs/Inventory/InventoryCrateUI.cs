@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Sirenix.OdinInspector.Editor.Internal;
 
 public class InventoryCrateUI : MonoBehaviour
 {
