@@ -8,7 +8,7 @@ public class Crate3DController : MonoBehaviour
     public float drumHoverSpeed = 2f;
     public float drumHoverDuration = 3f; 
     [Header("Crate Shake")]
-    public float shakeDuration = 1f;
+    public float shakeDuration = .7f;
     public float shakeMagnitude = 0.1f;
 
     [Header("Particles")]

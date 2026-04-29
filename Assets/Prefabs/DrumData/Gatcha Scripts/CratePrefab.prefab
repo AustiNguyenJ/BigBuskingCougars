@@ -72,7 +72,7 @@ MonoBehaviour:
   drumHoverAmplitude: {x: 0, y: 0.02, z: 0}
   drumHoverSpeed: 1
   drumHoverDuration: 5
-  shakeDuration: 3
+  shakeDuration: 2.3
   shakeMagnitude: 0.8
   breakParticles: {fileID: 0}
 --- !u!1 &8790956658655963972
