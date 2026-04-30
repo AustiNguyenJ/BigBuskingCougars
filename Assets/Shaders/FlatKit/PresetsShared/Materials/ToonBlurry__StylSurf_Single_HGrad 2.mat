@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ToonBlurry__StylSurf_Single_HGrad
+  m_Name: ToonBlurry__StylSurf_Single_HGrad 2
   m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -171,7 +171,7 @@ Material:
     - _VertexExtrusionSmoothNormals: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+    - _BaseColor: {r: 0.5849056, g: 0.54903877, b: 0.5675774, a: 1}
     - _Color: {r: 1, g: 0.6618828, b: 0.2688679, a: 1}
     - _ColorCelShadow: {r: 0.38581347, g: 0.38787434, b: 0.9622642, a: 1}
     - _ColorDim: {r: 0, g: 0, b: 0, a: 1}
